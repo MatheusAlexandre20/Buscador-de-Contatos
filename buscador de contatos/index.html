@@ -1,50 +1,57 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista telefônica</title>
+    <link rel="stylesheet" href="./styles.css">
 </head>
+
 <body>
-    <input placeholder="Digite o nome aqui" class="nomes" type="text">
-    <p class="valor"></p>
-    <button class="button-main">Procurar contato</button>
-    
+    <div class="container">
+        <h1>Lista Telefônica</h1>
+        <input placeholder="Digite o nome aqui" class="nomes" type="text">
+        <button class="button-main">Procurar contato</button>
+        <p class="valor"></p>
+    </div>
+
 </body>
 
 <script>
-    const contacts= [
-        {name: 'Rodolfo', number: '(19) 94345-3527'},
-        {name: 'Paulo', number:'(19) 15967-2384'},
-        {name: 'Matheus', number:'(19) 99650-0563'},
-        {name: 'Aline', number: '(19) 95163-5523'},
-        {name: 'Bruno', number:'(52) 26798-1483'}
-        ]
 
-    function mostrarTudo(){
+    let names = document.querySelector(".nomes")
+    let valorn = document.querySelector('.valor')
 
-        let names= document.querySelector(".nomes").value
-        let valorn= document.querySelector('.valor')
-        
-        const item = contacts.find(obj => obj.name.toLowerCase() === names.toLowerCase());
-        if(item){
-            valorn.innerHTML = `Nome: ${item.name} <br> Número: ${item.number}`;
+
+    const contacts = [
+        { name: 'Rodolfo', number: '(00) 12345-6789' },
+        { name: 'Paulo', number: '(00) 12345-6789' },
+        { name: 'Matheus', number: '(00) 12345-6789' },
+        { name: 'Aline', number: '(00) 12345-6789' },
+        { name: 'Bruno', number: '(00) 12345-6789' }
+    ]
+
+    function mostrarTudo() {
+        for (let i = 0; i < contacts.length; i++) {
+
+            if (names.value.toLowerCase() === contacts[i].name.toLowerCase()) {
+                valorn.innerHTML = `Contato encontrado! Nome: ${contacts[i].name} <br> Tel: ${contacts[i].number}`
+
+                break // PARA ELE PARA DE TENTAR EXECUTAR QUANDO ENCONTRAR, SAIR DO LOOP
             } else {
-                valorn.textContent = "Nome não encontrado.";
+                valorn.innerHTML = "Contato não encontrado, <br> tente outra vez."
             }
-
-
-        console.log(item)
-        
+        }
     }
 
 
 
-    document.querySelector(".button-main").addEventListener('click', mostrarTudo )
+    document.querySelector(".button-main").addEventListener('click', mostrarTudo)
 
 
 
-        
+
 
 </script>
 
