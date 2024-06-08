@@ -35,20 +35,21 @@
     ]
 
     function mostrarTudo() {
-        let found = false
-        let i = 0
-        while (i < contacts.length) {
-            if (names.value.toLowerCase() === contacts[i].name.toLowerCase()) {
-                valorn.innerHTML = `Contato encontrado! Nome: ${contacts[i].name} <br> Tel: ${contacts[i].number}`
-                found = true
-                break // PARA ELE PARA DE TENTAR EXECUTAR QUANDO ENCONTRAR, SAIR DO LOOP
-            }
-            i++
-        }
-        if (!found) {
-            valorn.innerHTML = "Contato não encontrado, <br> tente outra vez."
-        }
+        let found = false;
+        let i = 0;
 
+        do {
+            if (names.value.toLowerCase() === contacts[i].name.toLowerCase()) {
+                valorn.innerHTML = `Contato encontrado! Nome: ${contacts[i].name} <br> Tel: ${contacts[i].number}`;
+                found = true;
+                break; // PARA ELE PARA DE TENTAR EXECUTAR QUANDO ENCONTRAR, SAIR DO LOOP
+            }
+            i++;
+        } while (i < contacts.length && !found);
+
+        if (!found) {
+            valorn.innerHTML = "Contato não encontrado, <br> tente outra vez.";
+        }
     }
 
 
